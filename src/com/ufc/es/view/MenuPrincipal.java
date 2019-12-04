@@ -145,13 +145,12 @@ public class MenuPrincipal extends JFrame {
 				}
 				Music.tocarEfeitoSonoro("media/music/EfeitoClick.wav");
 				Music.pararMusica();
-				TelaJogo telaJogo = new TelaJogo(jogoController);
 				dispose();
-				
+				TelaJogo telaJogo = new TelaJogo(jogoController);
 				telaJogo.setVisible(true);
 			}
 		});
-		iniciarJogo.setBounds(34, 228, 119, 23);
+		iniciarJogo.setBounds(116, 228, 119, 23);
 		contentPane.add(iniciarJogo);
 		
 		JLabel lblNomeDoJogador = new JLabel("Nome do jogador 1:");
@@ -171,15 +170,6 @@ public class MenuPrincipal extends JFrame {
 		txtNome3.setBounds(20, 175, 143, 20);
 		contentPane.add(txtNome3);
 		txtNome3.setColumns(10);
-		
-		JButton btnListar = new JButton("listar");
-		btnListar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, jogoController.listarJogadores());
-			}
-		});
-		btnListar.setBounds(215, 228, 89, 23);
-		contentPane.add(btnListar);
 		
 		JLabel lblNomeDoJogador_2 = new JLabel("Nome do Jogador 2:");
 		lblNomeDoJogador_2.setBounds(185, 94, 119, 14);

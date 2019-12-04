@@ -33,7 +33,7 @@ public class Casa implements EventoEspecial{
 	}
 	@Override
 	public String toString() {
-		return "Casa [numCasa=" + numCasa + ", posicaoX=" + posicaoX + ", posicaoY=" + posicaoY + "]";
+		return "casa " + numCasa ;
 	}
 	@Override
 	public void realizaEvento(Jogador jogador) {

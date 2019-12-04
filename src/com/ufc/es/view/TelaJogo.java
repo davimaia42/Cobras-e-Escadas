@@ -55,11 +55,6 @@ public class TelaJogo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel tabuleiroImg = new JLabel("");
-		tabuleiroImg.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/tabuleiroImg.jpg")));
-		tabuleiroImg.setBounds(0, 0, 512, 512);
-		contentPane.add(tabuleiroImg);
-		
 		JLabel dado = new JLabel("");
 		dado.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/dado6.png")));
 		dado.setBounds(29, 549, 84, 84);
@@ -82,14 +77,14 @@ public class TelaJogo extends JFrame {
 		btnRolarDado.setBounds(123, 610, 115, 23);
 		contentPane.add(btnRolarDado);
 		
-		JButton btnMostrar = new JButton("Mostrar");
-		btnMostrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, jogoController.listarJogadores());
-			}
-		});
-		btnMostrar.setBounds(348, 610, 89, 23);
-		contentPane.add(btnMostrar);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/tabuleiroImg.jpg")));
+		lblNewLabel.setBounds(0, 0, 512, 512);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblJogadores = new JLabel("");
+		lblJogadores.setBounds(346, 549, 166, 84);
+		contentPane.add(lblJogadores);
 	}
 	public static void exibirMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);
@@ -104,10 +99,10 @@ public class TelaJogo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel tabuleiroImg = new JLabel("");
-		tabuleiroImg.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/tabuleiroImg.jpg")));
-		tabuleiroImg.setBounds(0, 0, 512, 512);
-		contentPane.add(tabuleiroImg);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/tabuleiroImg.jpg")));
+		lblNewLabel.setBounds(0, 0, 512, 512);
+		contentPane.add(lblNewLabel);
 		
 		JLabel dado = new JLabel("");
 		dado.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/dado6.png")));
@@ -147,18 +142,10 @@ public class TelaJogo extends JFrame {
 		});
 		btnRolarDado.setBounds(123, 610, 115, 23);
 		contentPane.add(btnRolarDado);
-		JButton btnMostrar = new JButton("Mostrar");
-		btnMostrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, jogoController.listarJogadores());
-			}
-		});
-		btnMostrar.setBounds(348, 610, 89, 23);
-		contentPane.add(btnMostrar);
 		
-		JLabel peao1 = new JLabel("");
-		peao1.setIcon(new ImageIcon(TelaJogo.class.getResource("/img/peao1.png")));
-		peao1.setBounds(10, 461, 16, 23);
-		contentPane.add(peao1);
+	
+		JLabel lblJogadores = new JLabel(jogoController.listarJogadores());
+		lblJogadores.setBounds(346, 549, 166, 84);
+		contentPane.add(lblJogadores);
 	}
 }

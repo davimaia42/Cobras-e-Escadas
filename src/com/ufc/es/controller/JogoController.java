@@ -10,11 +10,13 @@ import com.ufc.es.model.IDado;
 import com.ufc.es.model.Jogador;
 import com.ufc.es.model.Jogo;
 import com.ufc.es.model.Tabuleiro;
+import com.ufc.es.observer.Observer;
+import com.ufc.es.view.TelaJogo;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class JogoController {
+public class JogoController implements Observer{
 	private Jogo jogoAtual;
 	private IDado dado;
 	private IteradorJogador jogadorIterador;
@@ -26,6 +28,8 @@ public class JogoController {
 			throw new IOException("Maximo de jogadores e 4");
 		else {
 			this.jogoAtual = new Jogo(numeroDeJogadores, nomes);
+			for(Jogador j : jogoAtual.getJogadores())
+				j.attach(this);
 			jogadorIterador = jogoAtual.criaIterador();
 			jogadorDaVez = jogadorIterador.proximo();
 			switch(tipoJogo) {
@@ -37,8 +41,10 @@ public class JogoController {
 	public int moverJogador() {
 		
 		int rolagem = dado.rolarDado();
-		
 		int numCasaDestino = this.jogadorDaVez.getCasaAtual().getNumCasa() + rolagem;
+		if(numCasaDestino > 100) {
+			numCasaDestino = 100;
+		}
 		Casa casaDestino = Tabuleiro.getInstance().getCasa(numCasaDestino);
 		
 		this.jogadorDaVez.setCasaAtual(casaDestino);
@@ -57,5 +63,9 @@ public class JogoController {
 	}
 	public String getNomeJogadorDaVez() {
 		return jogadorDaVez.getNome();
+	}
+	@Override
+	public void update(Jogador jogador) {
+		TelaJogo.exibirMensagem(jogador.getNome() + " venceu a partida!");
 	}
 }

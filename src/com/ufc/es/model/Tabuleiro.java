@@ -31,12 +31,4 @@ public class Tabuleiro {
 		}
 		return null;
 	}
-	public Casa getCasaByPosicao(int x, int y) {
-		for(Casa c : casas) {
-			if(c.getPosicaoX() == x && c.getPosicaoY() == y) {
-				return c;
-			}
-		}
-		return null;
-	}
 }
