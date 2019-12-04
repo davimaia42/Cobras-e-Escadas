@@ -1,29 +1,29 @@
 package com.ufc.es.model;
 
-public class CasaSobeDesce extends Casa{
+public class CasaSobeDesce extends Casa implements EventoEspecial{
 	private int destinoPosicaoX;
 	private int destinoPosicaoY;
 	
 	
-	public CasaSobeDesce(int numCasa ,int posicaoX, int posicaoY, int sobePosicaoX, int sobePosicaoY) {
+	public CasaSobeDesce(int numCasa ,int posicaoX, int posicaoY, int destPosicaoX, int destPosicaoY) {
 		super(numCasa,posicaoX, posicaoY);
-		this.destinoPosicaoX = sobePosicaoX;
-		this.destinoPosicaoY = sobePosicaoY;
+		this.destinoPosicaoX = destPosicaoX;
+		this.destinoPosicaoY = destPosicaoY;
 	}
 
-	public int getSobePosicaoX() {
+	public int getDestPosicaoX() {
 		return destinoPosicaoX;
 	}
 
-	public void setSobePosicaoX(int sobePosicaoX) {
+	public void setDestPosicaoX(int sobePosicaoX) {
 		this.destinoPosicaoX = sobePosicaoX;
 	}
 
-	public int getSobePosicaoY() {
+	public int getDestPosicaoY() {
 		return destinoPosicaoY;
 	}
 
-	public void setSobePosicaoY(int sobePosicaoY) {
+	public void setDestPosicaoY(int sobePosicaoY) {
 		this.destinoPosicaoY = sobePosicaoY;
 	}
 
@@ -50,6 +50,11 @@ public class CasaSobeDesce extends Casa{
 	@Override
 	public String toString() {
 		return "CasaSobeDesce [numCasa=" + numCasa + ", posicaoX=" + posicaoX + ", posicaoY=" + posicaoY + "]";
+	}
+
+	@Override
+	public void realizaEvento(Jogador jogador) {
+		jogador.setCasaAtual(Tabuleiro.getInstance().getCasaByPosicao(this.destinoPosicaoX, this.destinoPosicaoY));
 	}
 
 }

@@ -36,15 +36,15 @@ public class FabricaCasa implements IFabricaCasa{
 		}
 		//cobra casa 62
 		else if(x == 1 && y == 6) {
-			return new CasaSobeDesce(62,x+1,y+1,3,2);
+			return new CasaSobeDesce(62,x+1,y+1,2,2);
 		}
 		//cobra casa 64
 		else if(x == 3 && y == 6) {
-			return new CasaSobeDesce(64,x+1,y+1,0,6);
+			return new CasaSobeDesce(64,x+1,y+1,1,6);
 		}
 		//escada casa 80
 		else if(x == 0 && y == 7) {
-			return new CasaSobeDesce(80,x+1,y+1,1,9);
+			return new CasaSobeDesce(80,x+1,y+1,2,10);
 		}
 		//escada casa 72
 		else if(x == 8 && y == 7) {
@@ -84,7 +84,11 @@ public class FabricaCasa implements IFabricaCasa{
 		}
 		//casa comuns
 		else {
-			return new Casa(y*10+x+1,x+1,y+1);
+			int xFixed = x;
+			if(y%2 != 0)
+				xFixed = 9 - x;
+			
+			return new Casa(y*10+x+1,xFixed+1,y+1);
 		}
 	}
 }

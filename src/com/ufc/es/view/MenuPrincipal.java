@@ -57,11 +57,8 @@ public class MenuPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void fecharJanela() {
-		Music.pararMusica();
-		this.dispose();
-	}
 	public MenuPrincipal() {
+		setResizable(false);
 		
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,14 +76,29 @@ public class MenuPrincipal extends JFrame {
 		contentPane.add(lblNumeroDeJogadores);
 		
 		JRadioButton rdbtnJogadores2 = new JRadioButton("2 jogadores");
+		rdbtnJogadores2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Music.tocarEfeitoSonoro("media/music/EfeitoClick.wav");
+			}
+		});
 		rdbtnJogadores2.setBounds(20, 50, 109, 23);
 		contentPane.add(rdbtnJogadores2);
 		
 		JRadioButton rdbtnJogadores3 = new JRadioButton("3 jogadores");
+		rdbtnJogadores3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Music.tocarEfeitoSonoro("media/music/EfeitoClick.wav");
+			}
+		});
 		rdbtnJogadores3.setBounds(130, 50, 109, 23);
 		contentPane.add(rdbtnJogadores3);
 		
 		JRadioButton rdbtnJogadores4 = new JRadioButton("4 jogadores");
+		rdbtnJogadores4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Music.tocarEfeitoSonoro("media/music/EfeitoClick.wav");
+			}
+		});
 		rdbtnJogadores4.setBounds(241, 50, 109, 23);
 		contentPane.add(rdbtnJogadores4);
 		
@@ -131,8 +143,11 @@ public class MenuPrincipal extends JFrame {
 						JOptionPane.showMessageDialog(null, erro.getMessage());
 					}
 				}
+				Music.tocarEfeitoSonoro("media/music/EfeitoClick.wav");
+				Music.pararMusica();
 				TelaJogo telaJogo = new TelaJogo(jogoController);
-				fecharJanela();
+				dispose();
+				
 				telaJogo.setVisible(true);
 			}
 		});

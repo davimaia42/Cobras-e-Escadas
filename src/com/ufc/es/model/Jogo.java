@@ -2,9 +2,13 @@ package com.ufc.es.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.ufc.es.iterador.Agregador;
+import com.ufc.es.iterador.Iterador;
+import com.ufc.es.iterador.IteradorJogador;
 import com.ufc.es.model.Tabuleiro;
 
-public class Jogo {
+public class Jogo implements Agregador<Jogador>{
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	
 	public Jogo() {
@@ -22,12 +26,12 @@ public class Jogo {
 		this.jogadores = jogadores;
 	}
 	
-	public void moverJogador(int numeroJogador, int numeroCasas) {
-		int numCasaDestino = jogadores.get(numeroJogador).getCasaAtual().getNumCasa() + numeroCasas;
+	/*public void moverJogador(Jogador jogador, int numeroCasas) {
+		int numCasaDestino = jogadores.get(jogador).getCasaAtual().getNumCasa() + numeroCasas;
 		Casa casaDestino = Tabuleiro.getInstance().getCasa(numCasaDestino);
 		
 		this.jogadores.get(numeroJogador).setCasaAtual(casaDestino);
-	}
+	}*/
 	@Override
 	public String toString() {
 		String saida = new String();
@@ -35,5 +39,9 @@ public class Jogo {
 			saida += j.toString() + "\n";
 		return saida;
 	}
-	
+	@Override
+	public IteradorJogador criaIterador() {
+		
+		return new IteradorJogador(this.jogadores);
+	}
 }

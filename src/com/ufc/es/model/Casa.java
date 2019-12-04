@@ -1,6 +1,6 @@
 package com.ufc.es.model;
 
-public class Casa {
+public class Casa implements EventoEspecial{
 	int numCasa;
 	int posicaoX;
 	int posicaoY;
@@ -34,5 +34,8 @@ public class Casa {
 	@Override
 	public String toString() {
 		return "Casa [numCasa=" + numCasa + ", posicaoX=" + posicaoX + ", posicaoY=" + posicaoY + "]";
+	}
+	@Override
+	public void realizaEvento(Jogador jogador) {
 	}
 }

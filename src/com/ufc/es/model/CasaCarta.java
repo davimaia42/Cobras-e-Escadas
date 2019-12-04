@@ -2,8 +2,9 @@ package com.ufc.es.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class CasaCarta extends Casa{
+public class CasaCarta extends Casa implements EventoEspecial{
 	private List<Carta> cartas = new ArrayList<Carta>(6);
 	
 	public CasaCarta() {
@@ -53,5 +54,17 @@ public class CasaCarta extends Casa{
 	@Override
 	public String toString() {
 		return "CasaCarta [numCasa=" + numCasa + ", posicaoX=" + posicaoX + ", posicaoY=" + posicaoY + "]";
+	}
+	@Override
+	public void realizaEvento(Jogador jogador) {
+		Random rand = new Random();
+		Carta cartaSorteada = cartas.get(rand.nextInt(cartas.size()));
+		if(cartaSorteada.isIrVoltar()) {
+			jogador.setCasaAtual(Tabuleiro.getInstance().getCasa(this.numCasa + cartaSorteada.getNumero()));
+			jogador.getCasaAtual().realizaEvento(jogador);
+		} else {
+			jogador.setCasaAtual(Tabuleiro.getInstance().getCasa(this.numCasa - cartaSorteada.getNumero()));
+			jogador.getCasaAtual().realizaEvento(jogador);
+		}
 	}
 }
